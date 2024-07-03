@@ -1,9 +1,9 @@
+import numpy as np
+
 def chebyshev_distance(p1, p2):
     """
-    Calculate the Chebyshev distance between two points by using a lambda function 
-    and the map function to calculate the absolute difference between 
-    corresponding coordinates of the two points, and then finding the maximum
-    difference.
+    Calculate the Chebyshev distance between two points by transforming them into numpy arrays,
+    and then returning the maximum absolute difference between their corresponding coordinates.
     
     Args:
         p1 (iterable): The first point as an iterable of coordinates.
@@ -13,7 +13,10 @@ def chebyshev_distance(p1, p2):
         int or float: The Chebyshev distance between the given two points.
     """
     
-    return max(map(lambda xy: abs(xy[0] - xy[1]), zip(p1, p2)))
+    p1_np_arr = np.array(p1)
+    p2_np_arr = np.array(p2)
+    
+    return np.max(np.abs(p1_np_arr - p2_np_arr))
 
 if __name__ == "__main__":
     point1 = (1, 2, 3)
